@@ -7,19 +7,46 @@ buttons.forEach(click => click.addEventListener('click', CalcDisplay));
 let displayNumber = 0;
 let temp = 0;
 let total = 0;
-// let final = 0;
 let operator = "";
+let newOperator = "";
 
 function CalcDisplay (e) {
-    if (e.target.id === "+") {
-        operator = "+";
+    if ((e.target.id === "+" || 
+        e.target.id === "-" ||
+        e.target.id === "*" ||
+        e.target.id === "/") && 
+        total == 0) {
+        operator = e.target.id;
         total = displayNumber;
         displayNumber = 0;
         temp = 0;
-    } else if (e.target.id === "="){
+    } else if ((e.target.id === "+" || 
+                e.target.id === "-" ||
+                e.target.id === "*" ||
+                e.target.id === "/") && 
+                total != 0) {
+        newOperator = e.target.id;
         total = operate(total, displayNumber, operator);
         display.textContent = total;
+        displayNumber = 0;
+        temp = 0;
+        operator = newOperator;
     } 
+    else if (e.target.id === "=") {
+        total = operate(total, displayNumber, operator);
+        display.textContent = total;
+        displayNumber = 0;
+        temp = 0;
+        operator = "";
+        newOperator = "";
+    } else if (e.target.id === "clear") {
+        displayNumber = 0;
+        temp = 0;
+        total = 0;
+        operator = "";
+        newOperator = "";
+        display.textContent = displayNumber;
+    }  
     else {
     displayNumber = (temp * 10) + (parseInt(e.target.id));
     display.textContent = displayNumber;
@@ -33,7 +60,7 @@ function CalcDisplay (e) {
 let add = (a,b) => a+b;
 let subtract = (a,b) => a-b;
 let multiply = (a,b) => a*b;
-let divide = (a,b) => a/b;
+let divide = (a,b) => (Math.round(a/b * 1000)/1000);
 
 let operate = (a,b,operator) => {
     if (operator === "+") {
@@ -43,18 +70,13 @@ let operate = (a,b,operator) => {
     } else if (operator === "*") {
         value = multiply(a,b);
     } else if (operator === "/") {
-        value = divide(a,b);
+        if (b === 0) {
+            display.textContent = "Oops!!";
+        } else {
+            value = divide(a,b);
+        }        
     }
     return value;
 }
-/*
-let a = parseInt(prompt("Enter first number :"));
 
-let operator = prompt("Enter the operator :");
-operator.toString();
-
-let b = parseInt(prompt("Enter the second number :"));
-
-alert(operate(a,b,operator));
-*/
 
