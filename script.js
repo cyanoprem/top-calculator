@@ -46,8 +46,13 @@ function CalcDisplay (e) {
         operator = "";
         newOperator = "";
         display.textContent = displayNumber;
-    }  
-    else {
+    }  else if (e.target.id === "percent") {
+        displayNumber = displayNumber/100;
+        display.textContent = displayNumber;
+    } else if (e.target.id === "sign-change") {
+        displayNumber = displayNumber * (-1);
+        display.textContent = displayNumber;
+    } else {
     displayNumber = (temp * 10) + (parseInt(e.target.id));
     display.textContent = displayNumber;
     temp = displayNumber;

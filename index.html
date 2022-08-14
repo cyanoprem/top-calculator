@@ -8,26 +8,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Calculator</h1>
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="0">0</button>
-    <button id="+">+</button>
-    <button id="-">-</button>
-    <button id="*">*</button>
-    <button id="/">/</button>
-    <button id="=">=</button>
-    <button id="clear">Clear</button>
-    <br>
-    <div>
-        <p class="display">0</p>
+    <div class="calculator">
+        <div class="top-display">
+            <p class="display">0</p>
+        </div>
+        <div class = "first-row">
+            <button id="clear" class="grey">AC</button>
+            <button id="sign-change" class="grey">+/-</button>
+            <button id="percent" class="grey">%</button>
+            <button id="/" class="orange">/</button>
+        </div>
+        <div class="second-row">
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="*" class="orange">*</button>
+        </div>
+        <div class="third-row">
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="-" class="orange">-</button>
+        </div>
+        <div class="fourth-row">
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="+" class="orange">+</button>
+        </div>
+        <div class="fifth-row">
+            <button id="0" class="zero">0</button>
+            <button id=".">.</button>
+            <button id="=" class="orange">=</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
